@@ -1,0 +1,175 @@
+/* Projects.css */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap');
+
+.projects-section {
+  padding: 5rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+
+.section-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2.5rem;
+  color: white;
+  white-space: nowrap;
+  margin-right: 1.5rem;
+}
+
+ 
+
+.section-line {
+  height: 1px;
+  width: 100%;
+  background-color: #233554;
+  position: relative;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  position: relative;
+}
+
+.project-card {
+  background: rgba(10, 25, 47, 0.85);
+  padding: 1.5rem;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(100, 255, 218, 0.1);
+  box-shadow: 0 10px 30px -15px rgba(2, 12, 27, 0.7);
+}
+
+.project-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(100, 255, 218, 0.1) 0%,
+    rgba(100, 255, 218, 0) 70%
+  );
+  z-index: 0;
+  transition: all 0.3s ease;
+  opacity: 0;
+}
+
+.project-card:hover::before {
+  opacity: 1;
+}
+
+.project-card:hover {
+  transform: translateY(-7px);
+  border-color: #64ffda;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.folder-icon {
+  color: #1cc6e4;
+  width: 40px;
+  height: 40px;
+}
+
+.folder-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.project-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.project-links a {
+  color: #ccd6f6;
+  transition: color 0.3s ease;
+  width: 20px;
+  height: 20px;
+}
+
+.project-links a:hover {
+  color: #64ffda;
+}
+
+.project-links svg {
+  width: 100%;
+  height: 100%;
+}
+
+.project-title {
+  font-family: 'Space Mono', monospace;
+  font-size: 1.55rem;
+  margin-bottom: 0.75rem;
+  color: #ccd6f6;
+  position: relative;
+}
+
+.project-description {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+  color: #8892b0;
+  position: relative;
+}
+
+.tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  position: relative;
+}
+
+.tech-tag {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.75rem;
+  background: rgba(100, 255, 218, 0.1);
+  border-radius: 3px;
+  color: white;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .projects-section {
+    padding: 3rem 1.5rem;
+  }
+  
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .section-line {
+    display: none;
+  }
+}
+
+/* Glow effect for extra tech vibe */
+@keyframes glow {
+  0% { box-shadow: 0 0 5px rgba(100, 255, 218, 0.5); }
+  50% { box-shadow: 0 0 20px rgba(100, 255, 218, 0.8); }
+  100% { box-shadow: 0 0 5px rgba(100, 255, 218, 0.5); }
+}
+
+.project-card:hover {
+  animation: glow 2s infinite;
+}
