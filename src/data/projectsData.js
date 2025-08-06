@@ -1,26 +1,36 @@
 export const projectsData = [
   {
-    title: 'AI Chat Companion',
-    description: 'A conversational agent powered by neural networks to assist users in daily tasks.',
-    techStack: ['React', 'Node.js', 'TensorFlow'],
+    title: 'AI-Powered LinkedIn URL Finder',
+    description: 'An AI agent that retrieves the LinkedIn profile URL of a person based on their name.',
+    techStack: ['LangChain', 'HuggingFace', 'Gemini API', 'Prompt Engineering'],
+    link: '#'
+  },
+
+{
+    title: 'Image-Based Classification of Sperm Cells',
+    description: 'Applied Random Forest, KNN, and SVM to classify 3000 images of normal sperm, abnormal sperm, and non-sperm cells',
+    techStack: ['Numpy', 'Python', 'ScikitLearn'],
+    link: '#'
+  },
+
+
+  {
+    title: 'IcebergAI',
+    description: 'Full-stack web application for ML model management and prediction serving.',
+    techStack: ['Python', 'SQL', 'React', 'Vite', 'Docker'],
+    link: '#'
+  },
+
+  {
+    title: 'SmartLoan',
+    description: 'Developed an end-to-end ML system to predict loan approval using toy datasets.',
+    techStack: ['Pandas', 'Matplotlib', 'Scikit-learn', 'Streamlit', 'Rasa'],
     link: '#'
   },
   {
-    title: 'Image Style Transfer',
-    description: 'An app that applies artistic filters to photos using deep learning models.',
-    techStack: ['Python', 'FastAPI', 'PyTorch'],
-    link: '#'
-  },
-  {
-    title: 'Voice-to-Text Transcriber',
-    description: 'Real-time speech recognition with an intuitive UI.',
-    techStack: ['React', 'Web Speech API', 'Express'],
-    link: '#'
-  },
-  {
-    title: 'Predictive Maintenance Dashboard',
-    description: 'Monitors equipment health and predicts failures using time series forecasting.',
-    techStack: ['Vue.js', 'D3.js', 'scikit-learn'],
+    title: 'PreProx',
+    description: 'Automated ML preprocessing with Streamlit: missing values, scaling, and encoding.',
+    techStack: ['Streamlit', 'Pandas', 'Numpy', 'Scikit-learn'],
     link: '#'
   },
   {
@@ -29,10 +39,5 @@ export const projectsData = [
     techStack: ['React', 'GraphQL', 'scikit-surprise'],
     link: '#'
   },
-  {
-    title: 'Autonomous Drone Simulator',
-    description: 'Simulates drone flight with obstacle avoidance via reinforcement learning.',
-    techStack: ['React Three Fiber', 'Python', 'Gym'],
-    link: '#'
-  }
+  
 ];
