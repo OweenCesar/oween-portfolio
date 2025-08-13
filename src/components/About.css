@@ -5,9 +5,11 @@
   --bg-dark: #0a0b12;
   --text-main: #f0f5ff;
   --text-secondary: #b0b8d0;
+  /* Add a new variable for card background */
+  --bg-card: rgba(30, 35, 60, 0.3); 
 }
 
-/* Base Styles */
+/* ... (keep all your existing styles from .about-section to .gradient-text) ... */
 .about-section {
   position: relative;
   padding: 120px 5%;
@@ -114,32 +116,101 @@
   color: transparent;
 }
 
-.about-text {
-  color: var(--text-secondary);
-  line-height: 1.8;
-  font-size: 1.1rem;
+
+/* DELETE the old .about-text rule and its .highlight rule */
+/* We will re-apply highlights inside the cards */
+
+/* ================================== */
+/* ========= NEW CSS STYLES ========= */
+/* ================================== */
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* Single column by default for mobile */
+  gap: 25px;
   margin-bottom: 40px;
 }
 
-.highlight {
+.grid-item {
+  background: var(--bg-card);
+  border: 1px solid rgba(0, 240, 255, 0.1);
+  border-radius: 12px;
+  padding: 25px;
+  transition: all 0.3s ease-in-out;
+  backdrop-filter: blur(5px);
+  
+  /* Animation setup */
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+/* New animation class for grid items */
+.grid-item.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger the animation for each card */
+.grid-item:nth-child(2) { transition-delay: 0.1s; }
+.grid-item:nth-child(3) { transition-delay: 0.2s; }
+
+
+.grid-item:hover {
+  transform: translateY(-5px);
+  border-color: rgba(0, 240, 255, 0.4);
+  box-shadow: 0 8px 30px rgba(0, 240, 255, 0.1);
+}
+
+.grid-item-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 15px;
+}
+
+.grid-icon {
+  font-size: 1.6rem;
+  color: var(--primary);
+  flex-shrink: 0; /* Prevents icon from shrinking */
+}
+
+.grid-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.grid-item p {
+  color: var(--text-secondary);
+  line-height: 1.7;
+  font-size: 1rem;
+  margin: 0;
+}
+
+.grid-item .highlight {
   color: var(--primary);
   font-weight: 500;
   position: relative;
+  /* Simplified highlight, no background needed */
 }
 
-.highlight::after {
+/* Re-add the highlight's after element if you still want the underline effect */
+.grid-item .highlight::after {
   content: '';
   position: absolute;
-  bottom: 2px;
+  bottom: 1px;
   left: 0;
   width: 100%;
-  height: 4px;
-  background: rgba(0, 240, 255, 0.3);
+  height: 3px;
+  background: rgba(0, 240, 255, 0.2);
   z-index: -1;
   border-radius: 2px;
 }
 
-/* CTA Button */
+/* ===================================== */
+/* ... (keep your CTA button styles) ... */
+/* ===================================== */
+
 .cta-button {
   display: inline-flex;
   align-items: center;
@@ -172,7 +243,11 @@
   transform: translateX(4px);
 }
 
-/* Responsive Adjustments */
+
+/* ============================================== */
+/* ... (keep your responsive adjustments) ... */
+/* ============================================== */
+
 @media (max-width: 1200px) {
   .about-container {
     gap: 50px;
@@ -190,6 +265,7 @@
 
   .section-title {
     font-size: 2.8rem;
+    text-align: center; /* Center title on smaller screens */
   }
 }
 
@@ -201,8 +277,9 @@
   .section-title {
     font-size: 2.2rem;
   }
-
-  .about-text {
-    font-size: 1rem;
+  
+  /* Make grid more compact on mobile */
+  .grid-item {
+    padding: 20px;
   }
 }

@@ -1,9 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import './BinaryRain.css';
 
- 
-
-function BinaryRain() {
+function BinaryRain({ setActiveComponent }) {  // Add props parameter
   const canvasRef = useRef(null);
 
   useEffect(() => {
@@ -32,8 +30,6 @@ function BinaryRain() {
     }
 
     let animationId;
-     
-
 
     function animate() {
       draw();
@@ -41,44 +37,41 @@ function BinaryRain() {
     }
     animate();
 
-    window.addEventListener('resize', () => {
+    const handleResize = () => {
       width = canvas.width = window.innerWidth;
       height = canvas.height = window.innerHeight;
-    });
+    };
 
-    return () => cancelAnimationFrame(animationId);
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      cancelAnimationFrame(animationId);
+      window.removeEventListener('resize', handleResize);  // Cleanup event listener
+    };
   }, []);
-   
  
   return (
     <div className="hero-container">
       <canvas ref={canvasRef} className="binary-bg" />
       <div className="hero-content">
-        <h1 style={{ fontSize: '5rem' }}>  AI Portfolio </h1>
+        <h1 style={{ fontSize: '5rem' }}>AI Portfolio</h1>
         <img src="src/assets/avatar1.png" alt="Oween's Avatar" className="avatar" />
 
-        <h1>  Hey there, I’m Oween 👋</h1>
+        <h1>Hey there, I'm Oween 👋</h1>
         <p>
-          <strong>Thanks for stopping by! Scroll around and check out what I’ve been building. </strong>
+          <strong>Thanks for stopping by! Scroll around and check out what I've been building.</strong>
         </p>
         <div className='buttons-row'>
-          <button href="/calculator" className="cta-button">
-          ABOUT ME
+          <button onClick={() => setActiveComponent('about')} className="cta-button">
+            ABOUT ME
           </button>
-          
-          <button href="/calculator" className="cta-button">
-          SEE MY WORK
+          <button onClick={() => setActiveComponent('projects')} className="cta-button">
+            SEE MY WORK
           </button>
-          <button href="/calculator" className="cta-button">
-          CONTACT ME
+          <button onClick={() => setActiveComponent('contact')} className="cta-button">
+            CONTACT ME
           </button>
-           
         </div>
-        
-        
-        
-      
-
       </div>
     </div>
   );

@@ -2,12 +2,43 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <!-- Primary Favicon - Now using your robot.png -->
+    <link rel="icon" type="image/png" href="/robot.png" />
+    
+    <!-- Fallback Favicons (keep these as they help with browser compatibility) -->
+    <link rel="alternate icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+    <link rel="alternate icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+    
+    <!-- Apple Touch Icon - Now using your robot.png -->
+    <link rel="apple-touch-icon" href="/robot.png">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/site.webmanifest">
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#9c27b0">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Oween Cesar - AI Developer Portfolio showcasing machine learning projects and research">
+    <meta name="keywords" content="AI, Machine Learning, Portfolio, Developer, Artificial Intelligence">
+    <meta property="og:title" content="Oween Cesar | AI Developer">
+    <meta property="og:description" content="Portfolio showcasing cutting-edge AI projects and research">
+    <meta property="og:type" content="website">
+    
+    <!-- Flaticon Attribution (required by license) -->
+    <meta name="author" content="Robot icons created by MetamorphLab - Flaticon">
+    <title>Oween Cesar | AI Developer Portfolio</title>
   </head>
   <body>
     <div id="root"></div>
+    
+    <!-- Visible attribution (positioned discreetly) -->
+    <div style="position: fixed; bottom: 0; right: 0; padding: 8px; background: rgba(0,0,0,0.7); color: white; font-size: 10px; z-index: 1000; border-top-left-radius: 8px;">
+      <a href="https://www.flaticon.com/free-icons/robot" title="robot icons" style="color: #ff00aa; text-decoration: none;">
+        Robot icons created by MetamorphLab - Flaticon
+      </a>
+    </div>
+    
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import './About.css';
-import oweenImg from './profile.png';
-
 import profileImg from './snow.jpeg';
+// Import icons
+import { FiUser, FiMapPin, FiCpu } from 'react-icons/fi'; 
+
 const About = () => {
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -11,9 +12,9 @@ const About = () => {
           entry.target.classList.add('animate-in');
         }
       });
-    }, { threshold: 0.2 });
+    }, { threshold: 0.1 }); // Adjusted threshold for grid items
 
-    document.querySelectorAll('.fade-in, .slide-up').forEach((el) => observer.observe(el));
+    document.querySelectorAll('.fade-in, .slide-up, .grid-item').forEach((el) => observer.observe(el));
     
     return () => observer.disconnect();
   }, []);
@@ -24,7 +25,7 @@ const About = () => {
       <div className="tech-grid-overlay"></div>
 
       <div className="about-container">
-        {/* Left Column - Photo (Large & Dynamic) */}
+        {/* Left Column - Photo */}
         <div className="about-photo fade-in">
           <div className="photo-wrapper">
             <img 
@@ -33,7 +34,7 @@ const About = () => {
               className="profile-image" 
               loading="lazy"
             />
-            <div className="tech-grid-mask"></div> {/* Grid overlay effect */}
+            <div className="tech-grid-mask"></div>
           </div>
         </div>
 
@@ -43,28 +44,40 @@ const About = () => {
             <span className="gradient-text">Beyond</span> The Code
           </h2>
 
-          <div className="about-text">
-            <p>
-              It's me <span className="highlight">Oween Cesar</span>, a 5th semester student of <span className="highlight">Artificial Intelligence </span> at the Deggendorf Institute of Technology in Germany.
-              I built this page to create <span className="highlight"> my own space </span> and share with other developers my work .
-            </p>
+          {/* NEW: Story Grid */}
+          <div className="about-grid">
+            {/* Card 1: Who I Am */}
+            <div className="grid-item">
+              <div className="grid-item-header">
+                <FiUser className="grid-icon" />
+                <h3 className="grid-title">Who I Am</h3>
+              </div>
+              <p>
+                I'm <span className="highlight">Oween Cesar</span>, an AI student at the Deggendorf Institute of Technology. Born in Peru 🇵🇪, shaped by years in Turkey, and now at home in Bavaria 🇩🇪. I'm a naturally curious and easygoing person who loves meeting new people and exploring cultures.
+              </p>
+            </div>
 
-            <p>
-              I’ve dipped my toes into a bit of everything—international sales, exports, teaching Spanish, kitchen shifts, even translation gigs. <span className="highlight"> Versatility has always been my thing 😉. </span>
-              But it wasn’t until I moved to Germany that I found what truly sparks my passion: <span className="highlight"> building AI applications</span>  that simplify and automate the everyday. 
-               
-            </p>
+            {/* Card 2: My Journey */}
+            <div className="grid-item">
+              <div className="grid-item-header">
+                <FiMapPin className="grid-icon" />
+                <h3 className="grid-title">My Journey</h3>
+              </div>
+              <p>
+                My path has been diverse—from international sales to kitchen shifts. This versatility led me to Germany, where I discovered my true passion: building <span className="highlight">AI applications</span> that simplify and automate the everyday.
+              </p>
+            </div>
 
-            <p>
-              Throughout my semesters, I’ve been gradually uncovering the power of AI, and right now I’m diving deep into developing AI agents powered by <span className="highlight"> Large Language Models</span>. 
-              I’m especially interested in turning <span className="highlight"> open-source tools into practical</span>, business-ready solutions that are not just smart but also sustainable
-
-            </p>
-            <p>  
-              But hey, it’s not all tech all the time! I might look serious, but I’m pretty easygoing. I genuinely enjoy meeting new people, exploring cultures, and having good conversations 
-              Born and raised in Peru 🇵🇪 (I can't prepare ceviche tho),  also spent several years living in Turkey , and now I’m based in Bavaria, Germany 💙🤍 🇩🇪 , a place that became my home.
-               
-            </p>
+            {/* Card 3: My Focus */}
+            <div className="grid-item">
+              <div className="grid-item-header">
+                <FiCpu className="grid-icon" />
+                <h3 className="grid-title">My Focus</h3>
+              </div>
+              <p>
+                Currently, I'm diving deep into developing AI agents powered by <span className="highlight">Large Language Models</span>. My goal is to turn open-source tools into practical, business-ready solutions that are both smart and sustainable.
+              </p>
+            </div>
           </div>
 
           <a href="#projects" className="cta-button">
