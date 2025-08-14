@@ -1,113 +1,180 @@
-import React, { useEffect } from 'react';
+import React from 'react';
+import { motion } from 'framer-motion';
+import { FaLinkedin, FaGithub, FaEnvelope, FaFileDownload, FaLocationArrow, FaRegClock, FaCopy, FaCheck } from 'react-icons/fa';
 import './Contact.css';
-import { FaLinkedin, FaGithub, FaEnvelope, FaFileDownload } from 'react-icons/fa';
 
-const Contact = () => {
-  useEffect(() => {
-    // Animation observer for scroll effects
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('animate-in');
-        }
-      });
-    }, { threshold: 0.1 });
+const CONTACT = {
+  email: 'oweenbarranzuela@gmail.com',                 // TODO: replace
+  linkedin: 'https://www.linkedin.com/in/oweenbarranzuela/', // TODO: replace
+  github: 'https://github.com/OweenCesar',       // TODO: replace
+  resume: '/path/to/resume.pdf',                   // TODO: replace
+  location: 'Deggendorf, Germany',                 // Optional
+  timezone: 'CEST (UTC+2)',                        // Optional
+  availability: 'Open to Working Student / Internship',
+};
 
-    document.querySelectorAll('.contact-item, .form-group').forEach((el) => observer.observe(el));
-    
-    return () => observer.disconnect();
-  }, []);
+export default function Contact() {
+  const [copied, setCopied] = React.useState(false);
+
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(CONTACT.email);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1800);
+    } catch (e) {
+      // ignore
+    }
+  };
+
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: { staggerChildren: 0.08, when: 'beforeChildren' }
+    }
+  };
+
+  const item = {
+    hidden: { y: 16, opacity: 0 },
+    show: { y: 0, opacity: 1, transition: { duration: 0.45, ease: 'easeOut' } }
+  };
 
   return (
     <section className="contact-section">
       <div className="contact-container">
-        <div className="contact-header">
-          <h2 className="section-title">
-            <span className="gradient-text">Let's Connect</span>
-          </h2>
-          <p className="section-subtitle">
-            I'm always open to discussing new opportunities, collaborations, or just a friendly chat about tech.
-          </p>
-        </div>
+        {/* Header / Pitch */}
+        <motion.header
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.25 }}
+          className="contact-header"
+        >
+          <motion.h2 variants={item} className="section-title">
+            <span className="gradient-text">Let’s Connect</span>
+          </motion.h2>
+          <motion.p variants={item} className="section-subtitle">
+            I’m open to collaborations, internships, and working-student roles. If my profile resonate with you,
+            reach out through any of the channels below.
+          </motion.p>
 
-        <div className="contact-content">
-          <div className="contact-info">
-            <div className="contact-item">
-              <div className="contact-icon">
-                <FaEnvelope size={24} />
-              </div>
-              <div>
-                <h3>Email</h3>
-                <a href="mailto:your.email@example.com">your.email@example.com</a>
-              </div>
+          {/* Quick meta badges */}
+          <motion.div variants={item} className="meta-row">
+            <span className="meta-pill" title="Location">
+              <FaLocationArrow aria-hidden="true" />
+              {CONTACT.location}
+            </span>
+            <span className="meta-pill" title="Timezone">
+              <FaRegClock aria-hidden="true" />
+              {CONTACT.timezone}
+            </span>
+            <span className="meta-pill badge-available" title="Availability">
+              {CONTACT.availability}
+            </span>
+          </motion.div>
+        </motion.header>
+
+        {/* Cards */}
+        <motion.div
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.2 }}
+          className="contact-grid"
+        >
+          {/* Email - primary CTA card */}
+          <motion.a
+            variants={item}
+            href={`mailto:${CONTACT.email}`}
+            className="contact-card contact-card--primary"
+            aria-label="Email me"
+          >
+            <div className="card-icon">
+              <FaEnvelope size={22} />
             </div>
-
-            <div className="contact-item">
-              <div className="contact-icon">
-                <FaLinkedin size={24} />
-              </div>
-              <div>
-                <h3>LinkedIn</h3>
-                <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer">
-                  linkedin.com/in/yourprofile
-                </a>
-              </div>
+            <div className="card-body">
+              <h3>Email</h3>
+              <p>{CONTACT.email}</p>
             </div>
-
-            <div className="contact-item">
-              <div className="contact-icon">
-                <FaGithub size={24} />
-              </div>
-              <div>
-                <h3>GitHub</h3>
-                <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">
-                  github.com/yourusername
-                </a>
-              </div>
+            <div className="card-actions">
+              <button
+                type="button"
+                className="copy-btn"
+                onClick={(e) => { e.preventDefault(); copyEmail(); }}
+                aria-label="Copy email to clipboard"
+              >
+                {copied ? <FaCheck /> : <FaCopy />}
+              </button>
             </div>
+          </motion.a>
 
-            <div className="contact-item">
-              <div className="contact-icon">
-                <FaFileDownload size={24} />
-              </div>
-              <div>
-                <h3>Resume</h3>
-                <a href="/path/to/resume.pdf" download className="resume-link">
-                  Download my resume
-                </a>
-              </div>
+          {/* LinkedIn */}
+          <motion.a
+            variants={item}
+            href={CONTACT.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="contact-card"
+            aria-label="Open LinkedIn profile"
+          >
+            <div className="card-icon">
+              <FaLinkedin size={22} />
             </div>
-          </div>
-
-          <form className="contact-form">
-            <div className="form-group">
-              <label htmlFor="name">Name</label>
-              <input type="text" id="name" placeholder="Your name" required />
+            <div className="card-body">
+              <h3>LinkedIn</h3>
+              <p className="muted">{CONTACT.linkedin.replace('https://', '')}</p>
             </div>
+          </motion.a>
 
-            <div className="form-group">
-              <label htmlFor="email">Email</label>
-              <input type="email" id="email" placeholder="Your email" required />
+          {/* GitHub */}
+          <motion.a
+            variants={item}
+            href={CONTACT.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="contact-card"
+            aria-label="Open GitHub profile"
+          >
+            <div className="card-icon">
+              <FaGithub size={22} />
             </div>
-
-            <div className="form-group">
-              <label htmlFor="subject">Subject</label>
-              <input type="text" id="subject" placeholder="What's this about?" />
+            <div className="card-body">
+              <h3>GitHub</h3>
+              <p className="muted">{CONTACT.github.replace('https://', '')}</p>
             </div>
+          </motion.a>
 
-            <div className="form-group">
-              <label htmlFor="message">Message</label>
-              <textarea id="message" rows="5" placeholder="Your message..." required></textarea>
+          {/* Resume */}
+          <motion.a
+            variants={item}
+            href={CONTACT.resume}
+            download
+            className="contact-card"
+            aria-label="Download resume"
+          >
+            <div className="card-icon">
+              <FaFileDownload size={22} />
             </div>
+            <div className="card-body">
+              <h3>Resume</h3>
+              <p className="muted">Download my CV (PDF)</p>
+            </div>
+          </motion.a>
+        </motion.div>
 
-            <button type="submit" className="submit-button">
-              Send Message
-            </button>
-          </form>
-        </div>
+        {/* Bottom callout */}
+        <motion.div
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.15 }}
+          className="contact-callout"
+        >
+          <motion.p variants={item}>
+            Prefer a quick chat? I’m happy to hop on a short call—just drop a line via email or LinkedIn.
+          </motion.p>
+        </motion.div>
       </div>
     </section>
   );
-};
-
-export default Contact;
+}

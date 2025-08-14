@@ -1,75 +1,145 @@
 import React, { useEffect, useRef } from 'react';
 import './BinaryRain.css';
 
-function BinaryRain({ setActiveComponent }) {  // Add props parameter
+function BinaryRain({ setActiveComponent }) {
   const canvasRef = useRef(null);
+  const rafRef = useRef(null);
 
   useEffect(() => {
-    // Rain of 1 and 0's 
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
-    let width = canvas.width = window.innerWidth;
-    let height = canvas.height = window.innerHeight;
-    const fontSize = 16;
-    const columns = Math.floor(width / fontSize);
-    const drops = Array(columns).fill(0);
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const dpr = Math.max(1, Math.floor(window.devicePixelRatio || 1));
 
-    function draw() {
-      ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+    let width = (canvas.width = window.innerWidth * dpr);
+    let height = (canvas.height = window.innerHeight * dpr);
+    canvas.style.width = `${window.innerWidth}px`;
+    canvas.style.height = `${window.innerHeight}px`;
+
+    const getVar = (v) => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+    const bgFade = 'rgba(0, 0, 0, 0.06)';
+    const headColor = getVar('--accent') || '#64ffda';
+    const trailColor = getVar('--accent-dim') || 'rgba(100,255,218,0.35)';
+
+    const baseFont = 16;
+    const fontSize = baseFont * dpr;
+    const columnWidth = fontSize;
+    const columns = Math.floor(width / columnWidth);
+
+    const drops = Array.from({ length: columns }, () => ({
+      y: Math.floor(Math.random() * (-100 - 0)) + 0,
+      v: Math.random() * 1.5 + 0.75,
+    }));
+
+    ctx.font = `${fontSize}px ui-monospace, monospace`;
+    ctx.textBaseline = 'top';
+
+    function drawFrame() {
+      ctx.fillStyle = bgFade;
       ctx.fillRect(0, 0, width, height);
-      ctx.fillStyle = '#ff00aa';
-      ctx.font = `${fontSize}px monospace`;
-      for (let i = 0; i < drops.length; i++) {
-        const text = Math.random() > 0.5 ? '1' : '0';
-        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-        if (drops[i] * fontSize > height && Math.random() > 0.975) {
-          drops[i] = 0;
+
+      for (let i = 0; i < columns; i++) {
+        const x = i * columnWidth;
+        const drop = drops[i];
+        const y = drop.y * fontSize;
+
+        ctx.fillStyle = trailColor;
+        ctx.fillText(Math.random() > 0.5 ? '1' : '0', x, y - fontSize);
+
+        ctx.shadowColor = headColor;
+        ctx.shadowBlur = 12 * dpr;
+        ctx.fillStyle = headColor;
+        ctx.fillText(Math.random() > 0.5 ? '1' : '0', x, y);
+        ctx.shadowBlur = 0;
+
+        drop.y += drop.v;
+        drop.v += (Math.random() - 0.5) * 0.03;
+        if (drop.v < 0.5) drop.v = 0.5;
+        if (drop.v > 2.4) drop.v = 2.4;
+
+        if (y > height && Math.random() > 0.975) {
+          drop.y = Math.random() * -20;
+          drop.v = Math.random() * 1.5 + 0.75;
         }
-        drops[i]++;
+      }
+
+      rafRef.current = requestAnimationFrame(drawFrame);
+    }
+
+    function start() {
+      if (!prefersReduced) {
+        rafRef.current = requestAnimationFrame(drawFrame);
+      } else {
+        ctx.fillStyle = 'rgba(0,0,0,1)';
+        ctx.fillRect(0, 0, width, height);
+        for (let i = 0; i < columns; i++) {
+          const x = i * columnWidth;
+          const y = Math.random() * height;
+          ctx.fillStyle = trailColor;
+          ctx.fillText(Math.random() > 0.5 ? '1' : '0', x, y);
+        }
       }
     }
 
-    let animationId;
-
-    function animate() {
-      draw();
-      animationId = requestAnimationFrame(animate);
+    function resize() {
+      width = canvas.width = window.innerWidth * dpr;
+      height = canvas.height = window.innerHeight * dpr;
+      canvas.style.width = `${window.innerWidth}px`;
+      canvas.style.height = `${window.innerHeight}px`;
     }
-    animate();
 
-    const handleResize = () => {
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
+    start();
+    window.addEventListener('resize', resize);
+
+    const onKey = (e) => {
+      if (e.key === '1') setActiveComponent?.('about');
+      if (e.key === '2') setActiveComponent?.('projects');
+      if (e.key === '3') setActiveComponent?.('contact');
     };
-
-    window.addEventListener('resize', handleResize);
+    window.addEventListener('keydown', onKey);
 
     return () => {
-      cancelAnimationFrame(animationId);
-      window.removeEventListener('resize', handleResize);  // Cleanup event listener
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      window.removeEventListener('resize', resize);
+      window.removeEventListener('keydown', onKey);
     };
-  }, []);
- 
+  }, [setActiveComponent]);
+
   return (
     <div className="hero-container">
-      <canvas ref={canvasRef} className="binary-bg" />
-      <div className="hero-content">
-        <h1 style={{ fontSize: '5rem' }}>AI Portfolio</h1>
-        <img src="src/assets/avatar1.png" alt="Oween's Avatar" className="avatar" />
+      <canvas ref={canvasRef} className="binary-bg" aria-hidden="true" />
+      <div className="overlay-gradient" aria-hidden="true" />
 
-        <h1>Hey there, I'm Oween 👋</h1>
-        <p>
-          <strong>Thanks for stopping by! Scroll around and check out what I've been building.</strong>
+      <div className="open-to-work">
+        <span className="dot"></span> Looking for an Internship
+      </div>
+
+      <div className="hero-content glass">
+        <div className="eyebrow">Portfolio · AI · MLOps</div>
+        <h1 className="title">
+          Building <span className="title-accent">useful AI</span>
+        </h1>
+        <p className="subtitle">
+          Hi, I’m <span className="highlight">Oween</span> — I ship small, sharp AI tools and agents.
+          Explore my work, peek at the code, or just say hi.
         </p>
+
+        <div className="avatar-wrap">
+          <img src="/src/assets/avatar1.png" alt="Oween avatar" className="avatar" />
+        </div>
+
         <div className='buttons-row'>
-          <button onClick={() => setActiveComponent('about')} className="cta-button">
-            ABOUT ME
+          <button onClick={() => setActiveComponent('about')} className="cta-button" aria-label="About me (1)">
+            <span className="btn-icon" aria-hidden>👤</span> ABOUT ME
+            <span className="kbd">1</span>
           </button>
-          <button onClick={() => setActiveComponent('projects')} className="cta-button">
-            SEE MY WORK
+          <button onClick={() => setActiveComponent('projects')} className="cta-button" aria-label="See my work (2)">
+            <span className="btn-icon" aria-hidden>🧩</span> SEE MY WORK
+            <span className="kbd">2</span>
           </button>
-          <button onClick={() => setActiveComponent('contact')} className="cta-button">
-            CONTACT ME
+          <button onClick={() => setActiveComponent('contact')} className="cta-button" aria-label="Contact me (3)">
+            <span className="btn-icon" aria-hidden>✉️</span> CONTACT ME
+            <span className="kbd">3</span>
           </button>
         </div>
       </div>
