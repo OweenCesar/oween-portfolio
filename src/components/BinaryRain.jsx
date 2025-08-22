@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import './BinaryRain.css';
+import avatar from './avatar1.png';
 
 function BinaryRain({ setActiveComponent }) {
   const canvasRef = useRef(null);
@@ -125,7 +126,7 @@ function BinaryRain({ setActiveComponent }) {
         </p>
 
         <div className="avatar-wrap">
-          <img src="/src/assets/avatar1.png" alt="Oween avatar" className="avatar" />
+          <img src={avatar} alt="Oween avatar" className="avatar" />
         </div>
 
         <div className='buttons-row'>
