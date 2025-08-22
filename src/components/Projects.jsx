@@ -1,12 +1,54 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import finder from '../data/finder.png'; 
+
+// Import images for Cells Project
+import cells from '../data/cells.png';
+import cell0 from '../data/cell0.jpg';
+import cell1 from '../data/cell1.png';
+import cell2 from '../data/cell2.png';
+import cell3 from '../data/cell3.png';
+import cell4 from '../data/cell4.png';
+import cell5 from '../data/cell5.jpg';
+
+// Import images for IcebergAI Project
+import iceberg from '../data/capita1.png'; 
+import iceberg1 from '../data/ic1.png';
+import iceberg2 from '../data/ic2.png';
+import iceberg3 from '../data/ic3.png'; 
+import iceberg4 from '../data/ic4.png';
+import iceberg5 from '../data/ic5.png';
+import iceberg6 from '../data/ic6.png';
+
+
+// import images for Smart Loadn Project
+import sl1 from '../data/sl1.png';
+import sl3 from '../data/sl3.png';
+import sl4 from '../data/sl4.png';
+import sl6 from '../data/sl6.png';
+import sl7 from '../data/sl7.png';
+import sl8 from '../data/sl8.png';
+import sl9 from '../data/sl9.png';
+
+
+// import images for Preprox Project
+import logo from '../data/preproxx.jpg'
+import pre from '../data/preprox.png';
+import pre1 from '../data/preprox1.png';
+import pre2 from '../data/preprox2.png';
+ 
+import pre4 from '../data/preprox4.png';
+
+
+
+
 // Sample projectsData - replace with your actual import
 const projectsData = [
   {
     title: 'AI-Powered LinkedIn URL Finder',
     description: 'An AI agent that retrieves the LinkedIn profile URL of a person based on their name.',
-    image:  finder,
+    image: finder,
+    screenshots: [finder, finder, finder], // Replace with actual screenshots
     techStack: ['LangChain', 'HuggingFace', 'Gemini API', 'Prompt Engineering'],
     link: '#',
     fullDescription: 'A sophisticated AI-powered tool that leverages advanced language models and web scraping techniques to find LinkedIn profiles. Uses natural language processing to match names with profile data, implementing smart search algorithms and data validation to ensure accurate results.',
@@ -16,47 +58,67 @@ const projectsData = [
   {
     title: 'Image-Based Classification of Sperm Cells',
     description: 'Applied Random Forest, KNN, and SVM to classify 3000 images of normal sperm, abnormal sperm, and non-sperm cells',
-    image: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=250&fit=crop&crop=center',
+    image: cells,
+    screenshots: [cell0, cell1, cell2, cell3, cell4, cell5], // Replace with actual screenshots
     techStack: ['Numpy', 'Python', 'ScikitLearn'],
     link: '#',
-    fullDescription: 'Advanced machine learning project focused on medical image classification. Implemented multiple classification algorithms to analyze and categorize sperm cell images with high accuracy, contributing to automated fertility analysis systems.',
-    features: ['Multi-algorithm approach', 'High accuracy classification', 'Medical imaging', 'Data preprocessing'],
-    github: 'https://github.com'
+    fullDescription: 'Machine Learning lecture project on medical image classification. Performed data exploration and preprocessing, applied feature extraction, and trained models using Random Forest, SVM, and KNN with hyperparameter tuning. The models were compared to evaluate performance on sperm cell image classification, and our final results and methodology were presented in class (some slides shown below).',
+    features: ['Feature Extraction', 'Hyperparameter tuning', 'Medical imaging', 'Data preprocessing', 'Data exploration'],
+    github: 'https://github.com/OweenCesar/Sperm-Classification'
   },
   {
     title: 'IcebergAI',
-    description: 'Full-stack web application for ML model management and prediction serving.',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=250&fit=crop&crop=center',
-    techStack: ['Python', 'SQL', 'React', 'Vite', 'Docker'],
+    description: 'Web application developed in the Software Engineering lecture to showcase a Titanic survival prediction tool and promote AI-related courses.',
+    image:  iceberg,
+    screenshots: [ iceberg1, iceberg2, iceberg3, iceberg4, iceberg5, iceberg6 ],  
+    techStack: ['React', 'Vite', 'CSS', 'Python', ' Docker', 'PostgreSQL', 'FastAPI', 'Postgresql'],
     link: '#',
-    fullDescription: 'Comprehensive platform for machine learning model lifecycle management. Features model deployment, monitoring, and serving capabilities with a modern React frontend and robust Python backend infrastructure.',
-    features: ['Model deployment', 'Real-time monitoring', 'Scalable architecture', 'User management'],
-    github: 'https://github.com'
+    fullDescription: 'As part of the Software Engineering lecture, our team built a web platform that lets users test different machine learning models to predict whether they would have survived the Titanic disaster, while also featuring a course promotion section. The project was structured across multiple repositories (frontend, backend, model backend, Docker Compose, and project management). I led the frontend development, creating a modern interface with React + Vite and polished CSS design. Additionally, I acted as project manager, organizing meetings and coordinating the team using Scrum with three sprints to ensure smooth progress and delivery.',   
+    features: ['Data Bases',
+  'Course promotion section',
+  'Modern React + Vite frontend', 'Backend connection', 
+  'Team coordination with Scrum (3 sprints) on Gitlab',
+  'Docker-based architecture' ],
+    github: 'https://mygit.th-deg.de/schober-teaching/student-projects/ain-23-software-engineering/ss-25/IcebergAI'
   },
   {
     title: 'SmartLoan',
-    description: 'Developed an end-to-end ML system to predict loan approval using toy datasets.',
-    image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400&h=250&fit=crop&crop=center',
+    description: 'SmartLoan: AI-powered web app for predicting loan approval, built during the Assistance Systems lecture.',    image:  sl8,
+    screenshots: [ sl1, sl3, sl4, sl6, sl7, sl8, sl9], // Replace with actual screenshots
     techStack: ['Pandas', 'Matplotlib', 'Scikit-learn', 'Streamlit', 'Rasa'],
     link: '#',
-    fullDescription: 'End-to-end machine learning solution for loan approval prediction. Incorporates data preprocessing, feature engineering, model training, and deployment with an interactive Streamlit interface.',
-    features: ['Predictive modeling', 'Interactive dashboard', 'Risk assessment', 'Automated decisions'],
-    github: 'https://github.com'
+    fullDescription: 'SmartLoan is a Python-based web application developed as part of the Assistance Systems lecture. The system leverages data preprocessing, feature engineering, and regression-based machine learning algorithms to estimate the likelihood of loan approval. Built with libraries such as pandas, NumPy, scikit-learn, and Streamlit, the app not only provides predictive modeling but also offers interactive dashboards and visualizations for exploring the used dataset. A key feature is LoanBot, a Rasa-powered chatbot that assists users with financial terminology and loan requirements, making the platform more accessible. The complete system architecture and design are documented in the project’s GitLab repository.',  
+    features: [
+  'Loan approval prediction using regression models',
+  'Interactive Streamlit dashboard with data visualizations',
+  'Rasa-powered LoanBot chatbot for user assistance',
+  'User-friendly financial risk assessment tool',
+  'Documented system design and implementation on GitLab'
+],
+    github: 'https://mygit.th-deg.de/ob26013/recommendation-project'
   },
   {
     title: 'PreProx',
     description: 'Automated ML preprocessing with Streamlit: missing values, scaling, and encoding.',
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=250&fit=crop&crop=center',
+    image:    logo,
+    screenshots: [
+     pre,  pre1, pre2 , pre4
+    ],  
     techStack: ['Streamlit', 'Pandas', 'Numpy', 'Scikit-learn'],
     link: '#',
-    fullDescription: 'Streamlined data preprocessing tool that automates common machine learning preparation tasks. Handles missing values, feature scaling, encoding, and data transformation with an intuitive web interface.',
-    features: ['Automated preprocessing', 'Data visualization', 'Export capabilities', 'Custom transformations'],
-    github: 'https://github.com'
+    fullDescription: 'Built as a time-saving solution during busy university days, this web app streamlines the data preprocessing phase of machine learning projects. With an intuitive interface, users can quickly apply transformations such as handling missing values, feature scaling, encoding, and custom data adjustments. The app outputs a clean, well-structured dataset, ready for modeling. Developed with Streamlit, Python, NumPy, and scikit-learn. ',
+    features: ['Automated preprocessing', 'Data visualization' , 'Built with Python, NumPy, and scikit-learn'],
+    github: 'https://github.com/OweenCesar/preprox'
   },
   {
     title: 'Recommendation Engine',
     description: 'Movie recommender based on user behavior and collaborative filtering.',
     image: 'https://images.unsplash.com/photo-1489599363203-6eb2bc6d9473?w=400&h=250&fit=crop&crop=center',
+    screenshots: [
+      'https://images.unsplash.com/photo-1489599363203-6eb2bc6d9473?w=400&h=250&fit=crop&crop=center',
+      'https://images.unsplash.com/photo-1489599363203-6eb2bc6d9473?w=400&h=250&fit=crop&crop=center',
+      'https://images.unsplash.com/photo-1489599363203-6eb2bc6d9473?w=400&h=250&fit=crop&crop=center'
+    ], // Replace with actual screenshots
     techStack: ['React', 'GraphQL', 'scikit-surprise'],
     link: '#',
     fullDescription: 'Sophisticated recommendation system using collaborative filtering and content-based approaches. Analyzes user preferences and movie characteristics to provide personalized recommendations.',
@@ -68,6 +130,7 @@ const projectsData = [
 function Projects() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [selectedProject, setSelectedProject] = useState(null);
+  const [selectedScreenshot, setSelectedScreenshot] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   
   const projectsPerSlide = 3;
@@ -103,17 +166,20 @@ function Projects() {
 
   const openModal = (project) => {
     setSelectedProject(project);
+    setSelectedScreenshot(0);
     setIsAutoPlaying(false);
   };
 
   const closeModal = () => {
     setSelectedProject(null);
+    setSelectedScreenshot(0);
     setIsAutoPlaying(true);
   };
 
   return (
     <div className="projects-slider-container">
       <style jsx>{`
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
         .projects-slider-container {
           max-width: 1400px;
           margin: 0 auto;
@@ -348,7 +414,7 @@ function Projects() {
         .modal-content {
           background: linear-gradient(145deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.95));
           border-radius: 20px;
-          max-width: 900px;
+          max-width: 1000px;
           width: 100%;
           max-height: 90vh;
           overflow-y: auto;
@@ -378,6 +444,7 @@ function Projects() {
           cursor: pointer;
           transition: all 0.3s ease;
           font-size: 1.2rem;
+          z-index: 10;
         }
 
         .close-btn:hover {
@@ -386,12 +453,68 @@ function Projects() {
           box-shadow: 0 0 15px rgba(100, 255, 218, 0.3);
         }
 
-        .modal-image {
+        /* Screenshots Gallery Styles */
+        .screenshots-section {
+          margin-bottom: 2rem;
+        }
+
+        .screenshot-gallery {
+          position: relative;
+        }
+
+        .main-screenshot {
           width: 100%;
-          height: 300px;
+          height: 500px;
           object-fit: cover;
           border-radius: 12px;
+          margin-bottom: 1rem;
+          transition: all 0.3s ease;
+        }
+
+        .screenshot-thumbnails {
+          display: flex;
+          gap: 1rem;
+          justify-content: center;
           margin-bottom: 1.5rem;
+        }
+
+        .screenshot-thumbnail {
+          width: 100px;
+          height: 60px;
+          object-fit: cover;
+          border-radius: 8px;
+          cursor: pointer;
+          border: 2px solid transparent;
+          transition: all 0.3s ease;
+          opacity: 0.7;
+        }
+
+        .screenshot-thumbnail:hover {
+          opacity: 1;
+          border-color: rgba(100, 255, 218, 0.5);
+          transform: scale(1.05);
+        }
+
+        .screenshot-thumbnail.active {
+          opacity: 1;
+          border-color: #64ffda;
+          box-shadow: 0 0 10px rgba(100, 255, 218, 0.3);
+        }
+
+        .screenshot-counter {
+          position: absolute;
+          top: 1rem;
+          right: 1rem;
+          background: rgba(0, 0, 0, 0.7);
+          color: #64ffda;
+          padding: 0.3rem 0.8rem;
+          border-radius: 15px;
+          font-size: 0.9rem;
+          backdrop-filter: blur(10px);
+        }
+
+        .modal-image {
+          display: none; /* Hide the original main image since we're using screenshots */
         }
 
         .modal-body {
@@ -410,10 +533,13 @@ function Projects() {
         }
 
         .modal-description {
+          font-family: 'Inter', sans-serif;
+          color: #cbd5e1;
           color: #94a3b8;
           font-size: 1.1rem;
-          line-height: 1.7;
+          line-height: 1.8;
           margin-bottom: 2rem;
+          letter-spacing: 0.3px
         }
 
         .modal-section {
@@ -464,7 +590,8 @@ function Projects() {
 
         .modal-links {
           display: flex;
-          gap: 1rem;
+          justify-content: center;
+          gap: 1.5rem;
           margin-top: 2rem;
         }
 
@@ -502,11 +629,30 @@ function Projects() {
           .modal-content {
             margin: 1rem;
             max-height: calc(100vh - 2rem);
+            max-width: calc(100vw - 2rem);
           }
 
           .modal-header,
           .modal-body {
             padding: 1.5rem;
+          }
+
+          .main-screenshot {
+            height: 250px;
+          }
+
+          .screenshot-thumbnails {
+            flex-wrap: wrap;
+            gap: 0.5rem;
+          }
+
+          .screenshot-thumbnail {
+            width: 80px;
+            height: 50px;
+          }
+
+          .modal-links {
+            flex-direction: column;
           }
         }
       `}</style>
@@ -633,11 +779,6 @@ function Projects() {
                 <button className="close-btn" onClick={closeModal}>
                   ×
                 </button>
-                <img 
-                  src={selectedProject.image} 
-                  alt={selectedProject.title}
-                  className="modal-image"
-                />
               </div>
 
               <div className="modal-body">
@@ -646,6 +787,38 @@ function Projects() {
                 <p className="modal-description">
                   {selectedProject.fullDescription || selectedProject.description}
                 </p>
+
+                {/* Screenshots Gallery */}
+                <div className="screenshots-section">
+                  <div className="screenshot-gallery">
+                    <div className="screenshot-counter">
+                      {selectedScreenshot + 1} / {selectedProject.screenshots.length}
+                    </div>
+                    <motion.img 
+                      key={selectedScreenshot}
+                      src={selectedProject.screenshots[selectedScreenshot]} 
+                      alt={`${selectedProject.title} - Screenshot ${selectedScreenshot + 1}`}
+                      className="main-screenshot"
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.3 }}
+                    />
+                    
+                    <div className="screenshot-thumbnails">
+                      {selectedProject.screenshots.map((screenshot, index) => (
+                        <motion.img
+                          key={index}
+                          src={screenshot}
+                          alt={`Thumbnail ${index + 1}`}
+                          className={`screenshot-thumbnail ${index === selectedScreenshot ? 'active' : ''}`}
+                          onClick={() => setSelectedScreenshot(index)}
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                </div>
 
                 {selectedProject.features && (
                   <div className="modal-section">
@@ -686,7 +859,7 @@ function Projects() {
                       <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                       </svg>
-                      View Code
+                      View Code on Github
                     </a>
                   )}
                   {selectedProject.link && selectedProject.link !== '#' && (
