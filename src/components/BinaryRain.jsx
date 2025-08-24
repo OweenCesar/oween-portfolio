@@ -112,7 +112,7 @@ function BinaryRain({ setActiveComponent }) {
       <div className="overlay-gradient" aria-hidden="true" />
 
       <div className="open-to-work">
-        <span className="dot"></span> Looking for an Internship
+        <span className="dot"></span> Looking for an Internship / Working Student Role
       </div>
 
       <div className="hero-content glass">
@@ -121,7 +121,7 @@ function BinaryRain({ setActiveComponent }) {
           Building <span className="title-accent">useful AI</span>
         </h1>
         <p className="subtitle">
-          Hi, I’m <span className="highlight">Oween</span> — I ship small, sharp AI tools and agents.
+          Hi, I’m <span className="highlight">Oween</span> — I build, I experiment, I learn. <br />
           Explore my work, peek at the code, or just say hi.
         </p>
 

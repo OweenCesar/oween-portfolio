@@ -2,12 +2,13 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { FaLinkedin, FaGithub, FaEnvelope, FaFileDownload, FaLocationArrow, FaRegClock, FaCopy, FaCheck } from 'react-icons/fa';
 import './Contact.css';
+import resume from './OWEEN_CESAR_EN.pdf';
 
 const CONTACT = {
   email: 'oweenbarranzuela@gmail.com',                 // TODO: replace
   linkedin: 'https://www.linkedin.com/in/oweenbarranzuela/', // TODO: replace
   github: 'https://github.com/OweenCesar',       // TODO: replace
-  resume: '/path/to/resume.pdf',                   // TODO: replace
+  resume:  resume,                   // TODO: replace
   location: 'Deggendorf, Germany',                 // Optional
   timezone: 'CEST (UTC+2)',                        // Optional
   availability: 'Open to Working Student / Internship',

@@ -64,7 +64,7 @@ const About = () => {
                 <h3 className="grid-title">My Journey</h3>
               </div>
               <p>
-                My path has been diverse—from international sales to kitchen shifts. This versatility led me to Germany, where I discovered my true passion: building <span className="highlight">AI applications</span> that simplify and automate the everyday.
+                My path has been diverse—international business, restaurants, programming, tutoring. This versatility led me to Germany, where I discovered my true passion: building <span className="highlight">AI applications</span> and discoring patterns in data.
               </p>
             </div>
 
@@ -75,15 +75,15 @@ const About = () => {
                 <h3 className="grid-title">My Focus</h3>
               </div>
               <p>
-                Currently, I'm diving deep into developing AI agents powered by <span className="highlight">Large Language Models</span>. My goal is to turn open-source tools into practical, business-ready solutions that are both smart and sustainable.
+                Right now, I’m really into building AI agents with <span className="highlight">Large Language Models</span>  and exploring how they can actually be useful in real life. On the side, I enjoy working with datasets, running ML experiments, and discovering cool patterns hidden in any data.
               </p>
             </div>
           </div>
 
-          <a href="#projects" className="cta-button">
+          {/* <a href="#projects" className="cta-button">
             <span>See My Work</span>
             <div className="arrow-icon"></div>
-          </a>
+          </a> */}
         </div>
       </div>
     </section>

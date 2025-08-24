@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import finder from '../data/finder.png'; 
+
+// Breaker project
+
+import finder from '../data/breaker.png'; 
+import finder1 from '../data/breaker2.png';
+import finder2 from '../data/breaker2.1.png';
+import finder3 from '../data/breaker3.png';
+import finder4 from '../data/breaker4.png';
 
 // Import images for Cells Project
 import cells from '../data/cells.png';
@@ -46,23 +53,37 @@ import pre4 from '../data/preprox4.png';
 const projectsData = [
   {
     title: 'AI-Powered LinkedIn URL Finder',
-    description: 'An AI agent that retrieves the LinkedIn profile URL of a person based on their name.',
+    description: "Give a name → get the most likely LinkedIn URL plus a concise, structured summary with two interesting facts.",
     image: finder,
-    screenshots: [finder, finder, finder], // Replace with actual screenshots
-    techStack: ['LangChain', 'HuggingFace', 'Gemini API', 'Prompt Engineering'],
+    screenshots: [finder1, finder2, finder3, finder4], // Replace with actual screenshots
+    techStack: [
+    "LangChain (Agents & Tools)",
+    "Gemini 2.5 Flash",
+    "Tavily Search API",
+    "Python",
+    "Prompt Engineering",
+    ".env config"
+    ],
     link: '#',
-    fullDescription: 'A sophisticated AI-powered tool that leverages advanced language models and web scraping techniques to find LinkedIn profiles. Uses natural language processing to match names with profile data, implementing smart search algorithms and data validation to ensure accurate results.',
-    features: ['AI-powered search', 'Natural language processing', 'Data validation', 'Batch processing'],
-    github: 'https://github.com'
+    fullDescription:  "An agentic workflow that resolves a person’s LinkedIn profile from a name and generates a clean, structured brief. The agent first uses Tavily to locate the most likely LinkedIn URL, then a lightweight scraper collects publicly visible fields. A prompt-engineered chain with Gemini 2.5 Flash produces a JSON-typed summary (short bio + two noteworthy facts). Built with LangChain tools and output parsing, plus environment-based configuration for API keys.",
+    features: [
+    "Name → LinkedIn URL resolution (Tavily + disambiguation)",
+    "LLM-generated profile summary + 2 facts",
+    "Structured JSON output & validation",
+    "Agent/tool architecture (LangChain)",
+    "Optional photo URL extraction",
+    "Batch mode & simple retries"
+    ],
+    github: 'https://github.com/OweenCesar/Breaker'
   },
   {
-    title: 'Image-Based Classification of Sperm Cells',
+    title: 'Machine Learning Image-Based Classification of Sperm Cells',
     description: 'Applied Random Forest, KNN, and SVM to classify 3000 images of normal sperm, abnormal sperm, and non-sperm cells',
     image: cells,
     screenshots: [cell0, cell1, cell2, cell3, cell4, cell5], // Replace with actual screenshots
     techStack: ['Numpy', 'Python', 'ScikitLearn'],
     link: '#',
-    fullDescription: 'Machine Learning lecture project on medical image classification. Performed data exploration and preprocessing, applied feature extraction, and trained models using Random Forest, SVM, and KNN with hyperparameter tuning. The models were compared to evaluate performance on sperm cell image classification, and our final results and methodology were presented in class (some slides shown below).',
+    fullDescription: 'Machine Learning lecture project on medical image classification. Performed data exploration and preprocessing on 3000 images, applied feature extraction, and trained models using Random Forest, SVM, and KNN with hyperparameter tuning. The models were compared to evaluate performance on sperm cell image classification, and our final results and methodology were presented in class (some slides shown below).',
     features: ['Feature Extraction', 'Hyperparameter tuning', 'Medical imaging', 'Data preprocessing', 'Data exploration'],
     github: 'https://github.com/OweenCesar/Sperm-Classification'
   },
@@ -82,7 +103,7 @@ const projectsData = [
     github: 'https://mygit.th-deg.de/schober-teaching/student-projects/ain-23-software-engineering/ss-25/IcebergAI'
   },
   {
-    title: 'SmartLoan',
+    title: 'SmartLoan: Machine Learning for Loan Approval Prediction',
     description: 'SmartLoan: AI-powered web app for predicting loan approval, built during the Assistance Systems lecture.',    image:  sl8,
     screenshots: [ sl1, sl3, sl4, sl6, sl7, sl8, sl9], // Replace with actual screenshots
     techStack: ['Pandas', 'Matplotlib', 'Scikit-learn', 'Streamlit', 'Rasa'],
@@ -98,7 +119,7 @@ const projectsData = [
     github: 'https://mygit.th-deg.de/ob26013/recommendation-project'
   },
   {
-    title: 'PreProx',
+    title: 'PreProx: Preprocessing & Exploration',
     description: 'Automated ML preprocessing with Streamlit: missing values, scaling, and encoding.',
     image:    logo,
     screenshots: [
@@ -111,18 +132,18 @@ const projectsData = [
     github: 'https://github.com/OweenCesar/preprox'
   },
   {
-    title: 'Recommendation Engine',
-    description: 'Movie recommender based on user behavior and collaborative filtering.',
+    title: 'New Entry - Comming soon',
+    description: 'Coming soon',
     image: 'https://images.unsplash.com/photo-1489599363203-6eb2bc6d9473?w=400&h=250&fit=crop&crop=center',
     screenshots: [
       'https://images.unsplash.com/photo-1489599363203-6eb2bc6d9473?w=400&h=250&fit=crop&crop=center',
       'https://images.unsplash.com/photo-1489599363203-6eb2bc6d9473?w=400&h=250&fit=crop&crop=center',
       'https://images.unsplash.com/photo-1489599363203-6eb2bc6d9473?w=400&h=250&fit=crop&crop=center'
     ], // Replace with actual screenshots
-    techStack: ['React', 'GraphQL', 'scikit-surprise'],
+    techStack: ['Coming soon' ],
     link: '#',
-    fullDescription: 'Sophisticated recommendation system using collaborative filtering and content-based approaches. Analyzes user preferences and movie characteristics to provide personalized recommendations.',
-    features: ['Collaborative filtering', 'Content-based recommendations', 'User profiling', 'Real-time suggestions'],
+    fullDescription: ' Coming soon',
+    features: ['Coming soon'],
     github: 'https://github.com'
   }
 ];
