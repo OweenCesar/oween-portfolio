@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { FaLinkedin, FaGithub, FaEnvelope, FaFileDownload, FaLocationArrow, FaRegClock, FaCopy, FaCheck } from 'react-icons/fa';
 import './Contact.css';
-import resume from './OWEEN_CESAR_EN.pdf';
+import resume from './oween_cesar_cv.pdf';
 
 const CONTACT = {
   email: 'oweenbarranzuela@gmail.com',                 // TODO: replace
