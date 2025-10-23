@@ -142,6 +142,10 @@ function BinaryRain({ setActiveComponent }) {
             <span className="btn-icon" aria-hidden>✉️</span> CONTACT ME
             <span className="kbd">3</span>
           </button>
+          <button onClick={() => window.open("https://web-production-f20d1.up.railway.app/", "_blank")} className="cta-button" aria-label="Contact me (3)">
+            <span className="btn-icon" aria-hidden>💬</span> CHAT WITH ME
+            <span className="kbd">4</span>
+          </button>
         </div>
       </div>
     </div>
