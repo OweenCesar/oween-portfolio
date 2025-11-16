@@ -47,10 +47,43 @@ import pre2 from '../data/preprox2.png';
 import pre4 from '../data/preprox4.png';
 
 
+// Import images for Chat with Me Project
+
+import chat1 from '../data/chat1.jpeg';
+import chat2 from '../data/chat2.jpeg';
 
 
 // Sample projectsData - replace with your actual import
 const projectsData = [
+
+
+  {
+    title: 'Chat with Me – Interactive CV Assistant',
+    description: "An AI-powered conversational CV that lets recruiters and collaborators ask questions and receive instant tailored answers based on your professional profile.",
+    image: chat1,
+    screenshots: [chat1, chat2], // Replace with actual screenshots
+    techStack: [
+    "LangChain",
+    "Gemini 2.5 Flash",
+    "Google Embeddings",
+    "Retrieval-Augmented Generation (RAG)",
+    "Python",
+    "Custom HTML & CSS"
+    ],
+    link: 'https://github.com/OweenCesar/Chat-with-me-OweenBot',
+    fullDescription:  "Traditional CVs require readers to scroll and manually search for information. 'Chat with Me' transforms your CV into an interactive chatbot that answers questions in real time using your personal data. Built using LangChain and Gemini 2.5 Flash, the system embeds your CV information using Google Embeddings and performs retrieval-augmented generation (RAG) to ensure precise, context-aware responses. The clean frontend, crafted in HTML and CSS, offers an intuitive conversational interface for seamless interactions.",
+    features: [
+    "Conversational UI for CV-like interactions",
+    "RAG-based personalized answers using your real profile data",
+    "Fast Gemini-powered query responses",
+    "Embeddings-based retrieval using Google Embeddings",
+    "Simple and clean frontend built with HTML & CSS",
+    "Ideal for recruiters, collaborators, or networking"
+    ],
+    github: 'https://github.com/OweenCesar/Chat-with-me-OweenBot'
+  },  
+
+
   {
     title: 'AI-Powered LinkedIn URL Finder',
     description: "Give a name → get the most likely LinkedIn URL plus a concise, structured summary with two interesting facts.",

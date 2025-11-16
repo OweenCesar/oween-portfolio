@@ -158,7 +158,7 @@ export default function Contact() {
             </div>
             <div className="card-body">
               <h3>Resume</h3>
-              <p className="muted">Download my CV (PDF)</p>
+              <p className="muted">Download my CV (PDF in English and German)</p>
             </div>
           </motion.a>
         </motion.div>
