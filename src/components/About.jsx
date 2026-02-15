@@ -75,7 +75,7 @@ const About = () => {
                 <h3 className="grid-title">My Focus</h3>
               </div>
               <p>
-                Right now, I’m really into building AI agents with <span className="highlight">Large Language Models</span>  and exploring how they can actually be useful in real life. On the side, I enjoy working with datasets, running ML experiments, and discovering cool patterns hidden in any data.
+                Right now, I’m really into building AI agents with <span className="highlight">Large Language Models</span>  and exploring how they can actually be useful in real life. Furthermore, I enjoy working with datasets, running ML experiments, and discovering cool patterns hidden in any data.
               </p>
             </div>
           </div>

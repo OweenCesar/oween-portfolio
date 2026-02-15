@@ -53,10 +53,132 @@ import chat1 from '../data/chat1.jpeg';
 import chat2 from '../data/chat2.jpeg';
 
 
+
+
+// Import images for Hackatum 
+import tum from '../data/tum/tum.png'
+import tum1 from '../data/tum/tum0.jpeg'
+import tum2 from '../data/tum/tum2.png'
+import tum3 from '../data/tum/tumm.png'
+
+// Import images for Rasperry Pi Project
+
+import pi from '../data/pi/pi.png'
+import pi1 from '../data/pi/pi2.png'
+import pi2 from '../data/pi/pi3.png'
+import pi3 from '../data/pi/pi4.png'
+import pi4 from '../data/pi/pi5.png'
+import pi5 from '../data/pi/pi6.png'
+import pi6 from '../data/pi/pi7.png'
+import pi7 from '../data/pi/pi8.png'
+
+
+// Import images for SWS work
+
+import sws from '../data/sws/a.png'
+import sws1 from '../data/sws/b.png'
+import sws2 from '../data/sws/h.png'
+import sws3 from '../data/sws/c.png'
+import sws4 from '../data/sws/d.png'
+import sws5 from '../data/sws/e.png'
+import sws6 from '../data/sws/f.png'
+import sws7 from '../data/sws/g.png'
+
+
 // Sample projectsData - replace with your actual import
 const projectsData = [
 
 
+{
+  title: 'ZeitZuHelfen — Voice-First Help Platform for Seniors (HackaTUM 2025)',
+  description:
+    "Voice-first platform connecting seniors in Munich with student helpers. Built in a team of 3 and reached Top-10 in the Munich City Challenge at HackaTUM 2025.",
+  image: tum1, // TODO: replace with your main image import
+  screenshots: [tum1, tum, tum2, tum3], // TODO: replace / add more later
+  techStack: [
+    "FastAPI",
+    "Telegram Bot API",
+    "Google Gemini 2.0 Flash",
+    "SQLite",
+    "SQLAlchemy",
+    "Pydantic",
+    "gTTS",
+    "Google Address Validation API"
+  ],
+  link: '#',
+  fullDescription:
+    "Developed during HackaTUM 2025, ZeitZuHelfen is a voice-first help request platform designed to reduce technology barriers for older adults. Our team of two built a system that allows seniors in Munich to send voice messages to request help, while student helpers can receive and respond to structured requests. The backend was implemented in FastAPI with authentication, user management, and CRUD flows for help requests, backed by a shared SQLite database using SQLAlchemy (async queries). The Telegram bot interface processes voice messages and uses Google Gemini 2.0 Flash to transcribe speech and extract structured request details. We also integrated Google Address Validation API to validate German addresses and gTTS to provide natural German voice feedback to users.",
+  features: [
+    "Top-10 (Munich City Challenge) at HackaTUM 2025 — team of 3",
+    "Voice-first UX via Telegram to reduce barriers for seniors",
+    "FastAPI backend with authentication, user management, and request CRUD",
+    "SQLite + SQLAlchemy with async queries for shared data access",
+    "Speech-to-structured-request pipeline using Google Gemini 2.0 Flash",
+    "German address validation + German voice responses (gTTS)"
+  ],
+  github: '#'
+},
+{
+  title: 'Stone & Green-Area Detection — Embedded Object Detection (Raspberry Pi | 2025)',
+  description:
+    "Embedded CV pipeline to detect stones and classify green areas for a small-scale outdoor navigation scenario. Collected & labeled ~600 Raspberry Pi images and trained a YOLOv4 detector.",
+  image: pi3, // TODO: replace with your main image import
+  screenshots: [pi6,pi5, pi7,  pi3, pi1, pi, pi2, pi4], // TODO: replace / add more later
+  techStack: [
+    "Python",
+    "OpenCV",
+    "YOLOv4",
+    "Raspberry Pi",
+    "LabelImg",
+    "MakeSense.ai",
+    "Data Augmentation"
+  ],
+  link: '#',
+  fullDescription:
+    "As part of the 'ML Applications in Automotive Systems' project (2025), I built an embedded computer-vision pipeline to detect stones and classify green areas for a small-scale outdoor navigation scenario. I collected around 600 images using a Raspberry Pi camera and manually annotated them with bounding boxes in YOLO format (primarily using MakeSense.ai), maintaining a clean dataset structure and a proper train/validation split. I trained and fine-tuned a YOLOv4 object detector and improved robustness through data augmentation (flips, rotations, brightness/contrast changes, and scaling). Finally, I deployed and tested the model on a Raspberry Pi setup, validating real-time inference performance and iterating on labeling/data quality to reduce false positives.",
+  features: [
+    "Built an embedded CV pipeline for stone detection + green-area classification",
+    "Collected ~600 images using a Raspberry Pi camera",
+    "Manual bounding-box labeling in YOLO format (MakeSense.ai + LabelImg)",
+    "YOLOv4 training and fine-tuning with augmentation (flip/rotate/scale/brightness-contrast)",
+    "Deployed and tested on Raspberry Pi for real-time inference",
+    "Iterated on dataset quality to reduce false positives"
+  ],
+  github: '#'
+},
+
+
+{
+  title: 'Predicting Water Quality Parameters (Smart Cities SWS | THD × TUM)',
+  description:
+    "End-to-end time-series ML pipeline using 1+ year of multi-sensor + meteorological/API data to predict nitrate and turbidity. Delivered ElasticNet and Huber models with >50% R² on the last 20 days of 2025.",
+  image: sws,
+  screenshots: [sws, sws1, sws2, sws3, sws4, sws5, sws6, sws7],  
+  techStack: [
+    "Python",
+    "NumPy",
+    "Pandas",
+    "Scikit-learn",
+    "Google Colab",
+    "GitLab",
+    "Time-series Feature Engineering"
+  ],
+  link: '#',
+  fullDescription:
+    "As part of my work in the Smart Cities SWS project (THD × TUM), I managed the complete machine learning pipeline for predicting key water quality parameters. The dataset covered more than one year of time-series sensor measurements (e.g., water temperature, dissolved oxygen (DO), pH, electrical conductivity (EC), and water level/inside-shaft signals) and additional context data such as meteorological variables collected via API calls. After cleaning and aligning the signals, I engineered time-series features using lag variables and rolling windows (mean, std, median over multiple window sizes). I trained and compared 10 models and delivered two strong and interpretable models—ElasticNet and Huber—to predict nitrate and turbidity. Evaluation on the last 20 days of 2025 achieved R² values above 50%, supporting robust short-term forecasting for monitoring and decision-making.",
+  features: [
+    "Owned the full ML pipeline: ingestion → cleaning → feature engineering → training → evaluation",
+    "Integrated multi-source data: 1+ year sensor streams + meteorological data via API calls",
+    "Time-series feature engineering with lags and rolling window statistics (mean/std/median)",
+    "Trained and benchmarked 10 models; selected ElasticNet + Huber for nitrate & turbidity prediction",
+    "Time-based evaluation on the last 20 days of 2025 with R² > 0.50",
+    "Reproducible experiments using Google Colab + GitLab version control"
+  ],
+  github: '#'
+},
+
+
+ 
   {
     title: 'Chat with Me – Interactive CV Assistant',
     description: "An AI-powered conversational CV that lets recruiters and collaborators ask questions and receive instant tailored answers based on your professional profile.",
